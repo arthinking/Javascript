@@ -1,0 +1,44 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
+<script type="text/javascript" src="toJsonParam.js"></script>
+<script>
+function clickBtn(){
+	
+	var params = $(userform).toJsonParam();
+	
+	console.log(params);
+	
+}
+$().ready(function(){
+
+});
+</script>
+</head>
+<body>
+<span>表单元素：表单标签，文本框，多行文本框，密码框，隐藏域，复选框，单选框，文件上传框，下拉选择框，表单按钮</span>
+<form id="userform">
+	<label>用户名　：</label><input type="text" name="username" /><br>
+	<label>用户描述：</label><TEXTAREA name="userdesc" cols="20" rows="2" wrap="PHYSICAL"></TEXTAREA><br>
+	<label>密　　码：</label><input type="password" name="password" size="20" maxlength="15"><br>
+	<input type="hidden" name="id" value="0" />
+	<label>爱　　好：</label><br>
+	<input type="checkbox" name="hobby" value="football">足球<br>
+	<input type="checkbox" name="hobby" value="basketball">篮球<br>
+	<label>性　　别：</label><br>
+	<input type="radio" name="sex" value="male">男<br>
+	<input type="radio" name="sex" value="female">女<br>
+	<!-- TODO： 文件上传 -->
+	<label>组　　名：</label><br>
+	<select name="groupname" size="3" multiple>
+		<option value="sun" selected>太阳队</option>
+		<option value="windboy">追风少年</option>
+		<option value="walk">步行者队</option>
+	</select><br>
+	
+	<input type="button" id="submit-button" onclick="clickBtn();" value="提交" />
+</form>
+</body>
+</html>
