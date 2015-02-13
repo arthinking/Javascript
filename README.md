@@ -1,4 +1,4 @@
 Javascript
 ==========
 
-JavaScript设计模式
+JavaScript相关代码

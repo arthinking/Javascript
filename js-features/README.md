@@ -1,0 +1,1 @@
+##JavaScript基础知识，特性

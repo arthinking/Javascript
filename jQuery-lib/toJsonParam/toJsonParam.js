@@ -1,4 +1,5 @@
 /**
+ * author: arthinking
  * serialize form data to json
  * usage : dom.toJsonParam() or 
  *         dom.toJsonParam('init')

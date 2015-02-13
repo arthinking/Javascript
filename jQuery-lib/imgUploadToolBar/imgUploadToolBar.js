@@ -32,7 +32,8 @@
 	var settings = {'urls'      : [],
 		      		'callback'  : function(){},
 		      		'fieldName' : 'url',
-		      		'thumbnailExt' : 'sthumb'};
+		      		'thumbnailExt' : 'sthumb',
+		      		'maxSize'   : 4};
 	
 	// Functions for toJsonParam
 	var methods = {
@@ -59,6 +60,9 @@
 			toolbarDom.append(imgItemHtml);
 			// 注册事件
 			toolbarDom.find('.iut-u-close').bind('click', function(){
+				if($(this).parent().parent().find('.iut-unit').length <= settings.maxSize){
+					$(this).find('.iut-add').show();
+				}
 				$(this).parent().remove();
 			});
 			// 绑定添加的回调
@@ -76,11 +80,18 @@
 				$(this).parent().remove();
 			});
 			_appendItem(imgItemDom, this);
+			if($(this).find('.iut-unit').length > settings.maxSize){
+				$(this).find('.iut-add').hide();
+			}
 		},
 		
 		del : function(){
 			// TODO
 			$.error('Method: del not implements yet.');			
+		},
+		
+		empty : function(){
+			$(this).find('.iut-unit').remove();
 		}
 	};
 	
