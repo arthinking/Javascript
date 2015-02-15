@@ -1,0 +1,42 @@
+<html>
+	<!-- 
+		http://seajs.org/
+		https://github.com/seajs/seajs/issues/547
+		http://hi.baidu.com/liuda101/item/54bcf8d0b6a65602d68ed057
+		https://github.com/liuda101/liuda101.github.com
+		install npm:
+		https://github.com/seajs/examples
+		
+	-->
+	<head>
+		
+		<script src="../sea-modules/seajs/seajs/2.2.0/sea.js"></script>
+		<link rel="stylesheet" href="../static/hello/src/application.css" />
+		
+		<script>
+		
+		  // Set configuration
+		  seajs.config({
+		    base: "../sea-modules/",
+		    alias: {
+		      "jquery": "jquery/jquery/1.10.1/jquery.js"
+		    }
+		  });
+		
+		  // For development
+		  if (location.href.indexOf("?dev") > 0) {
+		    seajs.use("../static/hello/src/application");
+		  }
+		  // For production
+		  else {
+		    seajs.use("examples/hello/1.0.0/application");
+		  }
+		</script>
+		
+	</head>
+	
+	<body>
+		<div id="hello-seajs">U.K.</div>
+	</body>
+	
+</html>

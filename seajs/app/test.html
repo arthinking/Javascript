@@ -1,0 +1,33 @@
+<html>
+	<!-- 
+		http://seajs.org/
+		https://github.com/seajs/seajs/issues/547
+		http://hi.baidu.com/liuda101/item/54bcf8d0b6a65602d68ed057
+		https://github.com/liuda101/liuda101.github.com
+		install npm:
+		https://github.com/seajs/examples
+		
+	-->
+	<head>
+		
+		<script src="../sea-modules/seajs/seajs/2.2.0/sea.js"></script>
+		<script>
+		  seajs.config({
+		    base: '../static/',
+		    alias: {
+		      now: '../static/test/dist/test/1.0.0/index.js'
+		      // moment: '../static/test/spm_modules/moment/2.6.0/moment.js'
+		    }
+		  });
+		  // load http://cdn.example.com/??now/1.0.0/index.js,moment/2.6.0/moment.js
+		  seajs.use(['now'], function(now) {
+		    console.log(now);
+		  });
+		</script>
+		
+	</head>
+	
+	<body>
+	</body>
+	
+</html>

@@ -1,0 +1,10 @@
+html,body,h1{padding:0px;margin:0px;font-size:13px;}
+
+#hello-seajs{
+	-webkit-transition:color 1.5s ease;
+	-o-transition:color 1.5s ease;
+	-moz-transition:color 1.5s ease;
+	transition:color 1.5s ease;
+	font-size:10em;
+	text-align:center;
+}
