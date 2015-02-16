@@ -1,0 +1,38 @@
+<html>
+
+	<head>
+		<!--
+		    引入SeaJS	
+		-->
+		<script src="../sea-modules/seajs/2.3.0/dist/sea.js"></script>
+		
+		<!--
+		    使用创建的 first-module
+		-->
+		<script>
+		  seajs.config({
+		    base: '../sea-modules/',
+		    alias: {
+		      'first-module': 'first-module/index'
+		    }
+		  });
+		  
+		  // 用户开发模块测试
+		  if (location.href.indexOf("?dev") > 0) {
+		    seajs.use("../static/first-module/src/index");
+		  }
+		  // 用于线上
+		  else {
+		  	seajs.use(['first-module'], function(now) {
+		    	// console.log(now);
+		  	});
+		  }
+		  
+		</script>
+		
+	</head>
+	
+	<body>
+	</body>
+	
+</html>

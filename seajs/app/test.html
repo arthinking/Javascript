@@ -10,15 +10,18 @@
 	-->
 	<head>
 		
-		<script src="../sea-modules/seajs/seajs/2.2.0/sea.js"></script>
+		<script src="../sea-modules/seajs/2.3.0/dist/sea.js"></script>
 		<script>
 		  seajs.config({
-		    base: '../static/',
+		    base: '../sea-modules/',
 		    alias: {
-		      now: '../static/test/dist/test/1.0.0/index.js'
-		      // moment: '../static/test/spm_modules/moment/2.6.0/moment.js'
+		      now: '../static/test/index',
+		      moment: 'moment/2.6.0/moment',
+		      math: 'script/math'
 		    }
 		  });
+		  
+		  // dist/test/1.0.0/
 		  // load http://cdn.example.com/??now/1.0.0/index.js,moment/2.6.0/moment.js
 		  seajs.use(['now'], function(now) {
 		    console.log(now);

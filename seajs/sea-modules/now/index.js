@@ -1,0 +1,1 @@
+define("now/0.0.0/index",["moment/2.9.0/moment"],function(e,n,m){var t=(e("moment/2.9.0/moment"),"test");m.exports=t});

@@ -1,17 +1,18 @@
-define(function(require) {
+define(function(require, exports, module) {
 
-	// var test;
-	// 
-	// module.exports = test;
-	
-	// require module in spm.dependencies
 	var moment = require('moment');
+	var math = require('math');
 	
-	// require relative file in you project
-	// var util = require('./util');
+	console.log(moment);
 	
-	var now = moment().format('MMMM Do YYYY, h:mm:ss a');
-	module.exports = now;
+	console.log(math);
+	
+	var now = "123"; // moment().format('MMMM Do YYYY, h:mm:ss a');
+	
+	module.exports = {
+    	now: now,
+    	math: math 
+  	};
 
 });
 
