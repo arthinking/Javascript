@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"></script>
+	</head>
+	<body>
+		<div ng-controller="MyController">
+			<input ng-model="to" type="email" placeholder="Recipient" />
+			<textarea ng-model="emailBody"></textarea>
+			<pre>{{ previewText }}</pre><!-- hello {{to}}   test -->
+		</div>
+		<script type="text/javascript" src="js/06_02_interpolate.js"></script>
+	</body>
+</html>
