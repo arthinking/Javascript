@@ -1,0 +1,15 @@
+<!doctype html>
+<html ng-app>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.13/angular.js"></script>
+	</head>
+	<body>
+		<div ng-controller="MyController">
+			<!--
+            	通常认为，在视图中通过对象的属性而非对象本身来进行引用绑定，是Angular中的最佳实践。
+            -->
+			<h1>Hello {{ clock.now }}!</h1>
+		</div>
+		<script type="text/javascript" src="js/02_03_best-data-binding-practice.js"></script>
+	</body>
+</html>
