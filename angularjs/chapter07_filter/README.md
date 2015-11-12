@@ -37,39 +37,39 @@ app.controller('DemoController', ['$scope', '$filter',
 {{ today | date:'mediumTime' }}<!-- 12:09:02 PM -->
 {{ today | date:'shortTime' }} <!-- 12:09 PM -->
 
- 年份格式化
+年份格式化
 四位年份：{{ today | date:'yyyy' }} <!-- 2013 -->
 两位年份：{{ today | date:'yy' }} <!-- 13 -->
 一位年份：{{ today | date:'y' }} <!-- 2013 -->
 
- 月份格式化
+月份格式化
 英文月份：{{ today | date:'MMMM' }} <!-- August -->
 英文月份简写：{{ today | date:'MMM' }} <!-- Aug -->
 数字月份：{{ today |date:'MM' }} <!-- 08 -->
 一年中的第几个月份：{{ today |date:'M' }} <!-- 8 -->
 
- 日期格式化
+日期格式化
 数字日期：{{ today|date:'dd' }} <!-- 09 -->
 一个月中的第几天：{{ today | date:'d' }} <!-- 9 -->
 英文星期：{{ today | date:'EEEE' }} <!-- Thursday -->
 英文星期简写：{{ today | date:'EEE' }} <!-- Thu -->
 
- 小时格式化
+小时格式化
 24小时制数字小时：{{today|date:'HH'}} <!--00-->
 一天中的第几个小时：{{today|date:'H'}} <!--0-->
 12小时制数字小时：{{today|date:'hh'}} <!--12-->
 上午或下午的第几个小时：{{today|date:'h'}} <!--12-->
 
- 分钟格式化
+分钟格式化
 数字分钟数：{{ today | date:'mm' }} <!-- 09 -->
 一个小时中的第几分钟：{{ today | date:'m' }} <!-- 9 -->
 
- 秒数格式化
+秒数格式化
 数字秒数：{{ today | date:'ss' }} <!-- 02 -->
 一分钟内的第几秒：{{ today | date:'s' }} <!-- 2 -->
 毫秒数：{{ today | date:'.sss' }} <!-- .995 -->
 
- 字符格式化
+字符格式化
 上下午标识：{{ today | date:'a' }} <!-- AM -->
 四位时区标识：{{ today | date:'Z' }} <!--- 0700 -->
 
@@ -125,6 +125,63 @@ angular.module('myApp.filters', [])
 
 ##7.2、表单验证
 AngularJS提供了很多表单验证指令。
+
+###input元素上使用的所有验证选项：
+
+1. 必填项
+```html
+<input type="text" required />
+```
+
+2. 最小长度
+```html
+<input type="text" ng-minlength="5" />
+```
+
+3. 最大长度
+```html
+<input type="text" ng-maxlength="20" />
+```
+
+4. 模式匹配
+```html
+<input type="text" ng-pattern="[a-zA-Z]" />
+```
+
+5. 电子邮件
+```html
+<input type="email" name="email" ng-model="user.email" />
+```
+
+6. 数字
+```html
+<input type="number" name="age" ng-model="user.age" />
+```
+
+7. URL
+```html
+<input type="url" name="homepage" ng-model="user.facebook_url" />
+```
+
+8. 自定义验证
+需要使用到指令的相关内容，第10章再深入研究如何创建自定义验证。
+
+9. 在表单中控制变量
+
+
+10. 一些有用的CSS样式
+
+11. 组合实例
+
+
+
+
+
+
+
+
+
+
 
 
 

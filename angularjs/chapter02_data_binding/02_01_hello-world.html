@@ -7,6 +7,6 @@
 	</head>
 	<body>
 		<input ng-model="name" type="text" placeholder="Your name">
-		<h1>Hello {{ name }}</h1>
+		<h1>Hello {{ name | number:2 }}</h1>
 	</body>
 </html>
