@@ -14,3 +14,4 @@
 * text（字符串）：一个包含`字符插值标记`的字符串。
 * mustHaveExpression（布尔型）：如果将这个参数设为true，当传入的字符串中不含有表达式时会返回null。
 * trustedContext（字符串）：AngularJS会对已经进行过字符插值操作的字符串通过$sec.getTrusted()方法进行严格的上下文转义。
+
