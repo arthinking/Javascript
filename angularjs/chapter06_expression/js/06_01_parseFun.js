@@ -13,8 +13,9 @@ angular.module('myApp', [])
           		var parseFun = $parse(newVal);
           		// Get the value of the parsed expression, set it on the scope for output
           		console.log(parseFun(scope));
-          		console.log(scope);
+          		console.log(parseFun());
           		scope.parsedExpr = parseFun(scope);
+          		console.log(scope);
         	}
       	});
     }]);

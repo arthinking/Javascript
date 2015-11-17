@@ -1,4 +1,3 @@
-
 [TOC]
 
 **1、HTML模板中的过滤器：**
@@ -122,7 +121,7 @@ angular.module('myApp.filters', [])
 ```
 
 ###使用：
-```html
+```xml
 <!-- Ginger loves dog treats -->
 {{ 'ginger loves dog treats' | lowercase | capitalize }}
 ```
@@ -168,13 +167,43 @@ AngularJS提供了很多表单验证指令。
 ```
 
 #### 8. 自定义验证
-需要使用到指令的相关内容，第10章再深入研究如何创建0自定义验证。
+需要使用到`指令`的相关内容，第10章再深入研究如何创建自定义验证。
 
 #### 9. 在表单中控制变量
 
 #### 10. 一些有用的CSS样式
 * $parsers：
-使用$parsers数组是实现自定义验证的途径之一。
+
+当用户同控制器进行交互，并且ngModelController中的$setViewValue()方法被调用时，`$parsers数组`中的函数会以流水线的形式被逐个调用。
+
+使用$parsers数组是实现`自定义验证`的途径之一。
+
+每个$parser返回的值都会被传入下一个$parser中。当不希望数据模型发生更新时返回`undefined`。
+
+```javascript
+angular.module('myApp')
+	.directive('oneToTen', function() {
+		return {
+			require: '?ngModel',
+			link: function(scope, ele, attrs, ngModel) {
+				if (!ngModel) return;
+				ngModel.$parsers.unshift(
+				function(viewValue) {
+					var i = parseInt(viewValue);
+					if (i >= 0 && i < 10) {
+						ngModel.$setValidity('oneToTen', true);
+						return viewValue;
+					} else {
+						ngModel.$setValidity('oneToTen', false);
+						return undefined;
+					}
+				});
+			}
+		};
+	});
+```
+
+
 
 * $formatters：
 
