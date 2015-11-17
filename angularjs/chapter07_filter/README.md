@@ -1,9 +1,13 @@
+
+[TOC]
+
 **1、HTML模板中的过滤器：**
 ```html
 {{ name | uppercase }}
 ```
 
 > 使用:传递参数给过滤器：
+
 ```html
 <!-- 显示：123.46 -->
 {{ 123.456789 | number:2 }}
@@ -126,58 +130,55 @@ angular.module('myApp.filters', [])
 ##7.2、表单验证
 AngularJS提供了很多表单验证指令。
 
-###input元素上使用的所有验证选项：
+### input元素上使用的所有验证选项：
 
-1. 必填项
+#### 1. 必填项
 ```html
 <input type="text" required />
 ```
 
-2. 最小长度
+#### 2. 最小长度
 ```html
 <input type="text" ng-minlength="5" />
 ```
 
-3. 最大长度
+#### 3. 最大长度
 ```html
 <input type="text" ng-maxlength="20" />
 ```
 
-4. 模式匹配
+#### 4. 模式匹配
 ```html
 <input type="text" ng-pattern="[a-zA-Z]" />
 ```
 
-5. 电子邮件
+#### 5. 电子邮件
 ```html
 <input type="email" name="email" ng-model="user.email" />
 ```
 
-6. 数字
+#### 6. 数字
 ```html
 <input type="number" name="age" ng-model="user.age" />
 ```
 
-7. URL
+#### 7. URL
 ```html
 <input type="url" name="homepage" ng-model="user.facebook_url" />
 ```
 
-8. 自定义验证
-需要使用到指令的相关内容，第10章再深入研究如何创建自定义验证。
+#### 8. 自定义验证
+需要使用到指令的相关内容，第10章再深入研究如何创建0自定义验证。
 
-9. 在表单中控制变量
+#### 9. 在表单中控制变量
 
-10. 一些有用的CSS样式
-*$parsers：*
+#### 10. 一些有用的CSS样式
+* $parsers：
 使用$parsers数组是实现自定义验证的途径之一。
 
+* $formatters：
 
-*$formatters：*
-
-
-
-11. 组合实例
+#### 11. 组合实例
 
 
 
