@@ -202,16 +202,34 @@ angular.module('myApp')
 		};
 	});
 ```
-
-
+说明：
+`directive：`[angularJS directive详解](http://www.cnblogs.com/cunjieliu/p/4055519.html)
+`ngModel:`[深入了解Angularjs指令中的ngModel](http://www.cnblogs.com/cunjieliu/p/4231353.html?utm_source=tuicool&utm_medium=referral)
+`unshift:`[JavaScript unshift() 方法](http://www.w3school.com.cn/jsref/jsref_unshift.asp)
+`setValidity:`[angularjs Form进阶](http://www.angularjs.cn/A08r)
 
 * $formatters：
+当绑定的ngModel值发生了变化，并经过`$parsers数组`中解析器的处理后，这个值会被传递给`$formatters流水线`。同$parsers数组可以修改表单的合法性状态类似，$formatters中的函数也可以修改并`格式化`这些值。
+```javascript
+angular.module('myApp')
+	.directive('oneToTen', function() {
+		return {
+			require: '?ngModel',
+			link: function(scope, ele, attrs, ngModel) {
+				if (!ngModel) return;
+				ngModel.$formatters.unshift(function(v) {
+					return $filter('number')(v);
+				});
+			}
+		};
+	});
+```
+
 
 #### 11. 组合实例
+[demo](http://jsbin.com/ePomUnI/5/edit?html,css,js,output)
 
-
-
-
+##ngMessages(1.3+)
 
 
 
