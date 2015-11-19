@@ -30,7 +30,7 @@ app.controller('DemoController', ['$scope', '$filter',
 ```
 
 *2. date*
-```html
+```javascript
 {{ today | date:'medium' }} <!-- Aug 09, 2013 12:09:02 PM -->
 {{ today | date:'short' }} <!-- 8/9/1312:09PM -->
 {{ today | date:'fullDate' }} <!-- Thursday, August 09, 2013 -->
@@ -106,9 +106,9 @@ orderBy:'name':true
 *9. uppercase*
 uppercase过滤器可以将字符串转换为大写形式。
 
-##7.1、自定义过滤器
+## 7.1、自定义过滤器
 
-###创建一个过滤器：
+### 创建一个过滤器：
 ```javascript
 angular.module('myApp.filters', [])
 	.filter('capitalize', function() {
@@ -120,13 +120,13 @@ angular.module('myApp.filters', [])
 	});
 ```
 
-###使用：
+### 使用：
 ```xml
 <!-- Ginger loves dog treats -->
 {{ 'ginger loves dog treats' | lowercase | capitalize }}
 ```
 
-##7.2、表单验证
+## 7.2、表单验证
 AngularJS提供了很多表单验证指令。
 
 ### input元素上使用的所有验证选项：
@@ -229,16 +229,4 @@ angular.module('myApp')
 #### 11. 组合实例
 [demo](http://jsbin.com/ePomUnI/5/edit?html,css,js,output)
 
-##ngMessages(1.3+)
-
-
-
-
-
-
-
-
-
-
-
-
+## ngMessages(1.3+)
