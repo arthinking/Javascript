@@ -81,3 +81,48 @@ We can access: root scope and parent scope and child scope
 Same $scope: We can access: root scope and parent scope and child scope
 ```
 
+## 8.1、向指令中传递数据
+在主HTML文档中，可以给指令添加myUrl和myLinkText两个属性，这两个参数会成为指令内部作用域的属性：
+```html
+angular.module('myApp', [])
+	.directive('myDirective', function() {
+		return {
+			restrict: 'A',
+			replace: true,
+			scope: {
+				myUrl: '@', //绑定策略
+				myLinkText: '@' //绑定策略
+			},
+			template: '<a href="{{myUrl}}">' +
+				'{{myLinkText}}</a>'
+			};
+		});
+
+<div my-directive
+	my-url="http://google.com"
+	my-link-text="Click me to go to Google">
+</div>
+```
+
+==隔离作用域==
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
