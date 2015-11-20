@@ -81,9 +81,10 @@ We can access: root scope and parent scope and child scope
 Same $scope: We can access: root scope and parent scope and child scope
 ```
 
-## 8.1、向指令中传递数据
+## 8.2、向指令中传递数据
 在主HTML文档中，可以给指令添加myUrl和myLinkText两个属性，这两个参数会成为指令内部作用域的属性：
-```html
+
+```javascript
 angular.module('myApp', [])
 	.directive('myDirective', function() {
 		return {
@@ -97,32 +98,60 @@ angular.module('myApp', [])
 				'{{myLinkText}}</a>'
 			};
 		});
+```
 
+```xml
 <div my-directive
 	my-url="http://google.com"
 	my-link-text="Click me to go to Google">
 </div>
 ```
 
-==隔离作用域==
+**隔离作用域**
+```javascript
+scope: {
+    someProperty: "needs to be set"  // 这样是行不通的，不能这样设置
+}
+```
+
+上面的代码创造的是隔离作用域，不过不能这样设置哦。
+
+应该在作用域对象内部把someProperty值设置为@这个绑定策略：
+```javascript
+scope: {
+    someProperty: '@'
+}
+
+scope: {
+    someProperty: '@someAttr'   // 显式指定绑定的属性名，由于作用域中属性经常是私有的，因此可以（虽然不常见）指定我们希望将这个内部属性同哪个DOM属性进行绑定
+}
+```
+
+完整示例：
+```html
+<div my-directive my-url="http://google.com" my-link-text="Click me to go to Google"></div>
+```
+
+```javascript
+angular.module('myApp', [])
+    .directive('myDirective', function() {
+        return {
+            restrict: 'A',
+            replace: true,
+            scope: {
+                myUrl: '@', //绑定策略
+                myLinkText: '@' //绑定策略
+            },
+            template: '<a href="{{myUrl}}">' +
+            '{{myLinkText}}</a>'
+        };
+    });
+```
+[在线示例](http://jsbin.com/eloKoDI/1/edit)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+**如何创建一个文本输入域，并将输入值同指令内部隔离作用域的属性绑定起来：**
+````html
+<input type="text" ng-model="myUrl" />
+<div my-directive some-attr="{{ myUrl }}" my-link-text="Click me to go to Google"></div>
+```
