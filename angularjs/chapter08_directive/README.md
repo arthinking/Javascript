@@ -151,7 +151,49 @@ angular.module('myApp', [])
 
 
 **如何创建一个文本输入域，并将输入值同指令内部隔离作用域的属性绑定起来：**
+首先，下面的代码是可以正常运行的：
 ````html
 <input type="text" ng-model="myUrl" />
 <div my-directive some-attr="{{ myUrl }}" my-link-text="Click me to go to Google"></div>
+```
+接下来把myUrl移动指令模板内部，就运行失败了：
+```html
+<div my-directive some-attr="{{ myUrl }}"
+my-link-text="Click me to go to Google">
+</div>
+
+template: '<div>\
+    <!-- 值是通过对DOM属性进行复制被传递到隔离作用域中的，难道它不应该同时设置同名属性的值吗？ -->
+    <input type="text" ng-model="myUrl" />\
+    <a href="{{myUrl}}">{{myLinkText}}</a>\
+</div>'
+```
+出现这种现象的原因是，内置指令ng-model在它自身内部的隔离作用域和DOM的作用域（由控制器提供）之间创建了一个双向数据绑定。
+
+下面是展示一个双向数据绑定的例子，`把someAttr和myUrl双向绑定起来`：
+```html
+<label>Their URL field:</label>
+<input type="text" ng-model="theirUrl">
+<div my-directive
+    some-attr="theirUrl"
+    my-link-text="Click me to go to Google"></div>
+```
+```javascript
+angular.module('myApp', [])
+    .directive('myDirective', function() {
+        return {
+            restrict: 'A',
+            replace: true,
+            scope: {
+                myUrl: '=someAttr', // 经过了修改，把someAttr和myUrl双向绑定起来
+                myLinkText: '@'
+            },
+            template: '\
+            <div>\
+                <label>My Url Field:</label>\
+                <input type="text" ng-model="myUrl" />\
+                <a href="{{myUrl}}">{{myLinkText}}</a>\
+            </div>\
+        };
+    });
 ```
