@@ -9,3 +9,4 @@ angular.module('myApp')
 
 ```
 
+> https://www.ng-book.com/media/toc.pdf
