@@ -27,7 +27,7 @@ angular.module('emailParser', [])
 			}
 		};
 	}]);
-	
+
 angular.module('myApp', ['emailParser'])
 	.controller('MyController', ['$scope', 'EmailParser',
 		function($scope, EmailParser) {
