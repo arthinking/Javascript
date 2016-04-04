@@ -21,6 +21,8 @@ export default class Button {
             Mustache.render(template, {text})
         );
 
+        console.log(Mustache.render(template, {text}))
+
         // Attach our listeners
         $('.button').click(this.onClick.bind(this));
     }

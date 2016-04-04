@@ -88,6 +88,7 @@ var createHtmpWebpackPlugin = function (options) {
         filename: options.filename,
         template: options.template || './app/template.ejs', // // Load a custom template
         chunks: options.chunks,
+        inject: false,
         // inject: 'body', // Inject all scripts into the body
         minify: production ? {
             collapseBooleanAttributes: true,
@@ -130,8 +131,7 @@ module.exports = {
         historyApiFallback: true,
         stats: {colors: true},
         proxy: {
-            '/live-demo/*': 'http://'+ serverDomain +':' + frontDebugPort + '/',
-            '/live-demo/common/*': 'http://'+ serverDomain +':' + serverPort + '/'
+            '/live-demo/*': 'http://'+ serverDomain +':' + serverPort + '/'
         }
     },
     resolve: {
