@@ -12,23 +12,29 @@ const PATHS = {
     builds: path.join(__dirname, 'builds/')
 };
 
+var serverDomain = '127.0.0.1';
+var frontDebugPort = 9890;
+var serverPort = 8080;
+
 var plugins = [
 
-    new ExtractPlugin(production ? '[name]-[hash].css' : '[name].css', {allChunks: true}), // <=== where should content be piped
+    new ExtractPlugin(path.join('builds/css/', production ? '[name]-[hash].css' : '[name].css'), {allChunks: true}), // <=== where should content be piped
 
     new webpack.optimize.CommonsChunkPlugin({
         name:      ['index1'],
-        filename: 'index1-common.js', // Move dependencies to our common file
+        filename: 'builds/js/index1-common.js', // Move dependencies to our common file
         children:  true, // Look for common dependencies in all children,
         minChunks: 2, // How many times a dependency must come up before being extracted
     }),
 
     new webpack.optimize.CommonsChunkPlugin({
         name:      ['index2'],
-        filename: 'index2-common.js', // Move dependencies to our common file
+        filename: 'builds/js/index2-common.js', // Move dependencies to our common file
         children:  true, // Look for common dependencies in all children,
         minChunks: 2, // How many times a dependency must come up before being extracted
     }),
+
+    new webpack.HotModuleReplacementPlugin()
 ];
 
 
@@ -108,14 +114,25 @@ module.exports = {
         index2 : './app/index2.js',
     },
     output: {
-        path:     'builds',
-        // path:     'builds',
-        filename: production ? '[name]-[hash].js' : '[name].js',
-        chunkFilename: production ? '[name]-[chunkhash].js' : '[name].js',
-        publicPath: 'builds/',
+        path: __dirname,
+        filename: path.join('builds/js/', production ? '[name]-[hash].js' : '[name].js'),
+        chunkFilename: path.join('builds/js/', production ? '[name]-[chunkhash].js' : '[name].js'),
+        publicPath: '/live-demo/',
     },
     devServer: {
         hot: true,
+        inline: true,
+        host: serverDomain,
+        port: frontDebugPort,
+        contentBase: ".",
+        progress: true,
+        noInfo: true,
+        historyApiFallback: true,
+        stats: {colors: true},
+        proxy: {
+            '/live-demo/*': 'http://'+ serverDomain +':' + frontDebugPort + '/',
+            '/live-demo/common/*': 'http://'+ serverDomain +':' + serverPort + '/'
+        }
     },
     resolve: {
         extensions: ['', '.js', '.jsx', 'css', 'scss']
