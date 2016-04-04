@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <%
+    for (var css in htmlWebpackPlugin.files.css) {
+    %>
+      <link href="<%=htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+    <%
+    }
+    %>
+  </head>
+  <body>
+    <a>test</a>
+    <h1></h1>
+    <div id="example"></div>
+  <%
+  for (var chunk in htmlWebpackPlugin.files.chunks) {
+  %>
+    <script src="<%=htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+  <%
+  }
+  %>
+
+  </body>
+</html>

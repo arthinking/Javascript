@@ -1,0 +1,9 @@
+parser: 'babel-eslint'
+
+plugins: [ 'react' ]
+
+ecmaFeatures:
+  jsx: true
+
+rules:
+  quotes: [ 2, 'single' ]

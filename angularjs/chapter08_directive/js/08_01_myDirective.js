@@ -5,3 +5,4 @@ angular.module('myApp',[])
 			template: '<a href="http://google.com">Click me to go to Google</a>'
 		};
 	});
+
